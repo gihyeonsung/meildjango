@@ -5,7 +5,7 @@
 {% block content %}
 
 {% for habit in object_list %}
-<p> {{ habit.title }} -- hello </p>
+<p> {{ habit.title }} -- {{ habit.session_remaining}}, {{ habit.session_start }} ~ {{ habit.session_end }}, {{ habit.session_log_count }}/{{ habit.count }}</p>
 {% endfor %}
 
 {% endblock %}

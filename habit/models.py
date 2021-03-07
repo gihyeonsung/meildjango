@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Habit(models.Model):
@@ -8,6 +9,26 @@ class Habit(models.Model):
     count = models.PositiveIntegerField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    def get_last_log(self):
+        return Log.objects.order_by('created').first()
+
+    def get_current_session_start(self):
+        current_session_index = (timezone.now() - self.created) // self.duration
+        return self.created + current_session_index * self.duration
+
+    def get_current_session_end(self):
+        return self.get_current_session_start() + self.duration
+
+    def get_current_session_remaining(self):
+        return self.get_current_session_end() - timezone.now()
+
+    def get_current_session_log_count(self):
+        return Log \
+            .objects \
+            .filter(created__gte=self.get_current_session_start()) \
+            .filter(created__lt=self.get_current_session_end()) \
+            .count()
 
 
 class Log(models.Model):
