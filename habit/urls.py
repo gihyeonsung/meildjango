@@ -1,8 +1,9 @@
 from django.urls import path
 
-from .views import HabitListView, HabitCreateView
+from .views import HabitListView, HabitDetailView, HabitCreateView
 
 urlpatterns = [
     path('', HabitListView.as_view()),
+    path('<int:pk>/', HabitDetailView.as_view()),
     path('create', HabitCreateView.as_view())
 ]

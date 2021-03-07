@@ -13,6 +13,9 @@ class Habit(models.Model):
     def get_last_log(self):
         return Log.objects.order_by('created').first()
 
+    def get_logs(self):
+        return Log.objects.order_by('-created')
+
     def get_current_session_start(self):
         current_session_index = (timezone.now() - self.created) // self.duration
         return self.created + current_session_index * self.duration

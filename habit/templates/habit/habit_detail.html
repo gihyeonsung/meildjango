@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ object.title }}</h1>
+<p>{{ object.session_log_count }} / {{ object.count }} </p>
+<p>{{ object.session_remaining }}</p>
+<p>{{ object.description }}</p>
+
+{% for log in object.logs %}
+  <p>{{ log }}</p>
+{% endfor %}
+
+{% endblock %}
