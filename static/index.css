@@ -39,3 +39,16 @@ a:visited {
 .card-contents {
   padding: 2rem 1rem;
 }
+
+.btn-add {
+  background-color: #a240fc;
+  border-radius: 50%;
+  bottom: 1rem;
+  color: #ffffff !important;
+  font-size: 4rem;
+  height: 4rem;
+  position: fixed;
+  right: 1rem;
+  text-align: center;
+  width: 4rem;
+}
