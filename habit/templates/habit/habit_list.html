@@ -1,8 +1,11 @@
-<html>
-  <head></head>
-  <body>
-    {% for habit in object_list %}
-    <p> {{ habit.title }} -- hello </p>
-    {% endfor %}
-  </body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}habits{% endblock %}
+
+{% block content %}
+
+{% for habit in object_list %}
+<p> {{ habit.title }} -- hello </p>
+{% endfor %}
+
+{% endblock %}
