@@ -2,8 +2,8 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 
-from .models import Habit
-from .forms import HabitForm
+from .models import Habit, Log
+from .forms import HabitForm, LogForm
 
 
 class HabitListView(ListView):
@@ -50,3 +50,8 @@ class HabitDetailView(DetailView):
 class HabitCreateView(CreateView):
     model = Habit
     form_class = HabitForm
+
+
+class LogCreateView(CreateView):
+    model = Log
+    form_class = LogForm
