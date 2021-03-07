@@ -55,3 +55,6 @@ class HabitCreateView(CreateView):
 class LogCreateView(CreateView):
     model = Log
     form_class = LogForm
+
+    def get_initial(self):
+        return {'habit': self.kwargs.get('pk')}
