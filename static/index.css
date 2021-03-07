@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean');
+
+* {
+  font-family: "Black Han Sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+a:visited {
+  color: #000000;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.card {
+  border-radius: 0.5rem;
+  box-shadow: rgba(0,0,0,0.3) 0 0 0.5rem;
+  display: flex-container;
+  margin: 0 0 1rem 0;
+}
+
+.card-title {
+  background-color: #a240fc;
+  border-radius: 0.5rem 0.5rem 0 0;
+  color: #ffffff;
+  font-size: 1.6rem;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.card-contents {
+  padding: 2rem 1rem;
+}

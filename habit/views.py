@@ -14,9 +14,8 @@ class HabitListView(ListView):
             'title': habit.title,
             'count': habit.count,
             'session_remaining': habit.get_current_session_remaining(),
-            'session_start': habit.get_current_session_start(),
-            'session_end': habit.get_current_session_end(),
-            'session_log_count': habit.get_current_session_log_count()
+            'session_log_count': habit.get_current_session_log_count(),
+            'url': habit.get_absolute_url()
         }
 
     def get_context_data(self, **kwargs):

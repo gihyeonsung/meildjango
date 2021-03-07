@@ -4,8 +4,18 @@
 
 {% block content %}
 
+<div class="card-container">
 {% for habit in object_list %}
-<p> {{ habit.title }} -- {{ habit.session_remaining}}, {{ habit.session_start }} ~ {{ habit.session_end }}, {{ habit.session_log_count }}/{{ habit.count }}</p>
+<a href="{{ habit.url }}">
+  <div class="card">
+    <div class="card-title">{{ habit.title }}</div>
+    <div class="card-contents">
+      <div class="habit-remaining-time">이번 기간은 {{ habit.session_remaining }}시간 남았어요</div>
+      <div class="habit-count">전체의 {{ habit.session_log_count}}/{{ habit.count }}만큼 진행했어요</div>
+    </div>
+  </div>
+</a>
 {% endfor %}
+</div>
 
 {% endblock %}
