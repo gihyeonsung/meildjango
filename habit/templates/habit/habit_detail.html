@@ -4,13 +4,24 @@
 
 {% block content %}
 
-<h1>{{ object.title }}</h1>
-<p>{{ object.session_log_count }} / {{ object.count }} </p>
-<p>{{ object.session_remaining }}</p>
-<p>{{ object.description }}</p>
+<div class="card-container">
+  <div class="card">
+    <div class="card-title">{{ object.title }}</div>
+    <div class="card-contents">
+      <div>{{ object.description }}</div>
+      <div>이번 기간은 {{ object.session_remaining }}시간 남았어요</div>
+      <div>전체의 {{ object.session_log_count}}/{{ object.count }}만큼 진행했어요</div>
+    </div>
+  </div>
 
-{% for log in object.logs %}
-  <p>{{ log }}</p>
-{% endfor %}
+  {% for log in object.logs %}
+  <a href="{{ log.url }}">
+    <div class="card">
+      <div class="card-title">{{ log.created }}에 기록했어요</div>
+      <div class="card-contents">{{ log.memo }}</div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
 
 {% endblock %}
