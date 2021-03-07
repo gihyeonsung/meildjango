@@ -12,3 +12,4 @@ class HabitListView(ListView):
 class HabitCreateView(CreateView):
     model = Habit
     form_class = HabitForm
+    success_url = '/'
