@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 
 
@@ -32,6 +33,9 @@ class Habit(models.Model):
             .filter(created__gte=self.get_current_session_start()) \
             .filter(created__lt=self.get_current_session_end()) \
             .count()
+
+    def get_absolute_url(self):
+        return reverse('habit:habitdetail', args=[str(self.id)])
 
 
 class Log(models.Model):
