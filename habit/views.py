@@ -36,7 +36,7 @@ class HabitListView(ListView):
             'title': habit.title,
             'count': habit.count,
             'curr_remaining': humanize_delta(habit.get_curr_remaining()),
-            'curr_logcount': habit.get_curr_logcount(),
+            'curr_count': habit.get_curr_count(),
         }
 
     def get_context_data(self, **kwargs):
@@ -57,7 +57,7 @@ class HabitDetailView(DetailView):
             'description': habit.description,
             'count': habit.count,
             'curr_remaining': humanize_delta(habit.get_curr_remaining()),
-            'curr_logcount': habit.get_curr_logcount(),
+            'curr_count': habit.get_curr_count(),
             'logs': habit.get_logs()
         }
 

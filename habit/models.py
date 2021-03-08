@@ -27,7 +27,7 @@ class Habit(models.Model):
     def get_curr_remaining(self):
         return self.get_curr_end() - timezone.now()
 
-    def get_curr_logcount(self):
+    def get_curr_count(self):
         return self.get_logs() \
             .filter(created__gte=self.get_curr_start()) \
             .filter(created__lt=self.get_curr_end()) \
