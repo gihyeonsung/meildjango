@@ -1,17 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
-@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
 
 * {
-  font-family: "Black Han Sans", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
-a {
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: black;
   text-decoration: none;
-  color: #000000;
-}
-
-a:visited {
-  color: #000000;
 }
 
 .card-container {
@@ -27,11 +25,16 @@ a:visited {
   margin: 0 0 1rem 0;
 }
 
+.card-container a:last-of-type .card {
+  margin-bottom: 0;
+}
+
 .card-title {
-  background-color: #a240fc;
+  background: linear-gradient(to right, #A240FC 0%, #D168FF 100%);
   border-radius: 0.5rem 0.5rem 0 0;
   color: #ffffff;
   font-size: 1.6rem;
+  font-weight: 700;
   overflow: hidden;
   padding: 1rem;
 }
@@ -40,15 +43,27 @@ a:visited {
   padding: 2rem 1rem;
 }
 
-.btn-add {
-  background-color: #a240fc;
-  border-radius: 50%;
-  bottom: 1rem;
-  color: #ffffff !important;
-  font-size: 4rem;
-  height: 4rem;
+footer {
   position: fixed;
-  right: 1rem;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3.5rem;
+  color: white;
   text-align: center;
-  width: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+footer .btn-add {
+  width: 3rem;
+  height: 3rem;
+  color: white;
+  font-size: 3rem;
+  line-height: 2.75rem;
+  margin-right: 5px;
+  border-radius: 25px;
+  background-color: #D168FF;
+  box-shadow: 0 0 10px #616161;
 }
