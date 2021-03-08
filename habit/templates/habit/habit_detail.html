@@ -8,17 +8,17 @@
   <div class="card">
     <div class="card-title">{{ object.title }}</div>
     <div class="card-contents">
-      <div>{{ object.description }}</div>
       <div>이번 기간은 {{ object.curr_remaining }} 남았어요</div>
-      <div>전체의 {{ object.curr_logcount }}/{{ object.count }}만큼 진행했어요</div>
+      <div>목표 횟수 {{ object.count }}번 중에 {{ object.curr_logcount }}번 반복하셨어요!</div>
+      <div>{{ object.description }}</div>
     </div>
   </div>
 
   {% for log in object.logs %}
-  <div class="card">
-    <div class="card-title">{{ log.created }}에 기록했어요</div>
-    <div class="card-contents">{{ log.memo }}</div>
-  </div>
+    <div class="card">
+      <div class="card-title">{{ log.created }}에 기록했어요</div>
+      <div class="card-contents">{{ log.memo }}</div>
+    </div>
   {% endfor %}
 </div>
 

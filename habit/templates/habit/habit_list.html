@@ -5,17 +5,17 @@
 {% block content %}
 
 <div class="card-container">
-{% for habit in object_list %}
-<a href="{% url 'habit:habitdetail' habit.pk %}">
-  <div class="card">
-    <div class="card-title">{{ habit.title }}</div>
-    <div class="card-contents">
-      <div class="habit-remaining-time">이번 기간은 {{ habit.curr_remaining }} 남았어요</div>
-      <div class="habit-count">전체의 {{ habit.curr_logcount }}/{{ habit.count }}만큼 진행했어요</div>
-    </div>
-  </div>
-</a>
-{% endfor %}
+  {% for habit in object_list %}
+    <a href="{% url 'habit:habitdetail' habit.pk %}">
+      <div class="card">
+        <div class="card-title">{{ habit.title }}</div>
+        <div class="card-contents">
+          <div>이번 기간은 {{ habit.curr_remaining }} 남았어요</div>
+          <div>목표 횟수 {{ habit.count }}번 중에 {{ habit.curr_countlog }}번 반복하셨어요!</div>
+        </div>
+      </div>
+    </a>
+  {% endfor %}
 </div>
 
 <a href="{% url 'habit:habitcreate' %}" class="btn-add">+</a>
