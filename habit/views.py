@@ -20,7 +20,7 @@ def humanize_delta(delta: timezone.timedelta):
         return f'{mins}분'
 
     hours = int(mins // 60)
-    if hours > 24:
+    if hours < 24:
         return f'{hours}시간'
 
     days = int(hours // 24)
