@@ -1,9 +1,30 @@
-from django.views.generic.list import ListView
+from django.utils import timezone
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
+from django.views.generic.list import ListView
 
 from .models import Habit, Log
 from .forms import HabitForm, LogForm
+
+
+def humanize_delta(delta: timezone.timedelta):
+    """
+    humanize timedelta in korean to string
+    """
+    secs = delta.total_seconds()
+    if secs < 60:
+        return f'{secs}초'
+
+    mins = int(secs // 60)
+    if mins < 60:
+        return f'{mins}분'
+
+    hours = int(mins // 60)
+    if hours > 24:
+        return f'{hours}시간'
+
+    days = int(hours // 24)
+    return f'{days}일'
 
 
 class HabitListView(ListView):
@@ -13,7 +34,8 @@ class HabitListView(ListView):
         return {
             'title': habit.title,
             'count': habit.count,
-            'session_remaining': habit.get_current_session_remaining(),
+            'session_remaining': humanize_delta(
+                habit.get_current_session_remaining()),
             'session_log_count': habit.get_current_session_log_count(),
             'url': habit.get_absolute_url()
         }
@@ -35,7 +57,8 @@ class HabitDetailView(DetailView):
             'title': habit.title,
             'description': habit.description,
             'count': habit.count,
-            'session_remaining': habit.get_current_session_remaining(),
+            'session_remaining': humanize_delta(
+                habit.get_current_session_remaining()),
             'session_log_count': habit.get_current_session_log_count(),
             'logs': habit.get_logs()
         }
