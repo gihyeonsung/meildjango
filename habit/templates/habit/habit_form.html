@@ -4,10 +4,17 @@
 
 {% block content %}
 
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-<input type="submit" value="Save">
-</form>
+<div class="card-container">
+  <div class="card">
+    <div class="card-title">습관 설정하기</div>
+    <div class="card-contents">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="저장">
+      </form>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
