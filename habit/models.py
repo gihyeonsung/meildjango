@@ -19,7 +19,7 @@ class Habit(models.Model):
 
     def get_curr_start(self):
         curr_index = (timezone.now() - self.created) // self.duration
-        return self.created + curr_index * self.duration
+        return self.created + (curr_index * self.duration)
 
     def get_curr_end(self):
         return self.get_curr_start() + self.duration
