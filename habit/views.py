@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.utils import timezone
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
@@ -74,6 +75,9 @@ class HabitCreateView(CreateView):
 class LogCreateView(CreateView):
     model = models.Log
     form_class = forms.LogForm
+
+    def get_success_url(self):
+        return reverse('habit:habitdetail', args=[str(self.kwargs.get('pk'))])
 
     def get_initial(self):
         return {'habit': self.kwargs.get('pk')}
