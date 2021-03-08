@@ -14,11 +14,8 @@ class Habit(models.Model):
     def get_absolute_url(self):
         return reverse('habit:habitdetail', args=[str(self.id)])
 
-    def get_last_log(self):
-        return Log.objects.order_by('created').first()
-
     def get_logs(self):
-        return Log.objects.order_by('-created')
+        return Log.objects.filter(habit=self.pk).order_by('-created')
 
     def get_curr_start(self):
         curr_index = (timezone.now() - self.created) // self.duration
@@ -31,8 +28,7 @@ class Habit(models.Model):
         return self.get_curr_end() - timezone.now()
 
     def get_curr_logcount(self):
-        return Log \
-            .objects \
+        return self.get_logs() \
             .filter(created__gte=self.get_curr_start()) \
             .filter(created__lt=self.get_curr_end()) \
             .count()
