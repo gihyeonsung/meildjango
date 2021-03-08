@@ -33,9 +33,8 @@ class HabitListView(ListView):
         return {
             'title': habit.title,
             'count': habit.count,
-            'session_remaining': humanize_delta(
-                habit.get_current_session_remaining()),
-            'session_log_count': habit.get_current_session_log_count(),
+            'curr_remaining': humanize_delta(habit.get_curr_remaining()),
+            'curr_logcount': habit.get_curr_logcount(),
             'url': habit.get_absolute_url()
         }
 
@@ -43,7 +42,7 @@ class HabitListView(ListView):
         context = super().get_context_data(**kwargs)
         object_list = list(context['object_list'])
         object_list = map(self.create_object, object_list)
-        object_list = sorted(object_list, key=lambda k: k['session_remaining'])
+        object_list = sorted(object_list, key=lambda k: k['curr_remaining'])
         context['object_list'] = object_list
         return context
 
@@ -56,9 +55,8 @@ class HabitDetailView(DetailView):
             'title': habit.title,
             'description': habit.description,
             'count': habit.count,
-            'session_remaining': humanize_delta(
-                habit.get_current_session_remaining()),
-            'session_log_count': habit.get_current_session_log_count(),
+            'curr_remaining': humanize_delta(habit.get_curr_remaining()),
+            'curr_logcount': habit.get_curr_logcount(),
             'logs': habit.get_logs()
         }
 

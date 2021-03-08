@@ -11,31 +11,31 @@ class Habit(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    def get_absolute_url(self):
+        return reverse('habit:habitdetail', args=[str(self.id)])
+
     def get_last_log(self):
         return Log.objects.order_by('created').first()
 
     def get_logs(self):
         return Log.objects.order_by('-created')
 
-    def get_current_session_start(self):
-        current_session_index = (timezone.now() - self.created) // self.duration
-        return self.created + current_session_index * self.duration
+    def get_curr_start(self):
+        curr_index = (timezone.now() - self.created) // self.duration
+        return self.created + curr_index * self.duration
 
-    def get_current_session_end(self):
-        return self.get_current_session_start() + self.duration
+    def get_curr_end(self):
+        return self.get_curr_start() + self.duration
 
-    def get_current_session_remaining(self):
-        return self.get_current_session_end() - timezone.now()
+    def get_curr_remaining(self):
+        return self.get_curr_end() - timezone.now()
 
-    def get_current_session_log_count(self):
+    def get_curr_logcount(self):
         return Log \
             .objects \
-            .filter(created__gte=self.get_current_session_start()) \
-            .filter(created__lt=self.get_current_session_end()) \
+            .filter(created__gte=self.get_curr_start()) \
+            .filter(created__lt=self.get_curr_end()) \
             .count()
-
-    def get_absolute_url(self):
-        return reverse('habit:habitdetail', args=[str(self.id)])
 
 
 class Log(models.Model):
