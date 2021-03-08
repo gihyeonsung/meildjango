@@ -3,8 +3,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 
-from .models import Habit, Log
-from .forms import HabitForm, LogForm
+from . import models, forms
 
 
 def humanize_delta(delta: timezone.timedelta):
@@ -28,9 +27,9 @@ def humanize_delta(delta: timezone.timedelta):
 
 
 class HabitListView(ListView):
-    model = Habit
+    model = models.Habit
 
-    def create_object(self, habit: Habit):
+    def create_object(self, habit: models.Habit):
         return {
             'title': habit.title,
             'count': habit.count,
@@ -50,9 +49,9 @@ class HabitListView(ListView):
 
 
 class HabitDetailView(DetailView):
-    model = Habit
+    model = models.Habit
 
-    def create_object(self, habit: Habit):
+    def create_object(self, habit: models.Habit):
         return {
             'title': habit.title,
             'description': habit.description,
@@ -70,13 +69,13 @@ class HabitDetailView(DetailView):
 
 
 class HabitCreateView(CreateView):
-    model = Habit
-    form_class = HabitForm
+    model = models.Habit
+    form_class = forms.HabitForm
 
 
 class LogCreateView(CreateView):
-    model = Log
-    form_class = LogForm
+    model = models.Log
+    form_class = forms.LogForm
 
     def get_initial(self):
         return {'habit': self.kwargs.get('pk')}
