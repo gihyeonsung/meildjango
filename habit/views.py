@@ -31,11 +31,11 @@ class HabitListView(ListView):
 
     def create_object(self, habit: models.Habit):
         return {
+            'pk': habit.pk,
             'title': habit.title,
             'count': habit.count,
             'curr_remaining': humanize_delta(habit.get_curr_remaining()),
             'curr_logcount': habit.get_curr_logcount(),
-            'url': habit.get_absolute_url()
         }
 
     def get_context_data(self, **kwargs):
