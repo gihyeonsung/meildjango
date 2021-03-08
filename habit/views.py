@@ -43,7 +43,8 @@ class HabitListView(ListView):
         context = super().get_context_data(**kwargs)
         object_list = list(context['object_list'])
         object_list = map(self.create_object, object_list)
-        object_list = sorted(object_list, key=lambda k: k['curr_remaining'])
+        object_list = sorted(
+            object_list, key=lambda k: k['curr_remaining'], reverse=True)
         context['object_list'] = object_list
         return context
 
