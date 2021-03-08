@@ -15,12 +15,10 @@
   </div>
 
   {% for log in object.logs %}
-  <a href="{{ log.url }}">
-    <div class="card">
-      <div class="card-title">{{ log.created }}에 기록했어요</div>
-      <div class="card-contents">{{ log.memo }}</div>
-    </div>
-  </a>
+  <div class="card">
+    <div class="card-title">{{ log.created }}에 기록했어요</div>
+    <div class="card-contents">{{ log.memo }}</div>
+  </div>
   {% endfor %}
 </div>
 
