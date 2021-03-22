@@ -26,5 +26,6 @@
 </div>
 
 <a href="{% url 'habit:logcreate' habit.pk %}" class="btn btn-create shadow">+</a>
+<a href="{% url 'habit:habitdelete' habit.pk %}" class="btn btn-delete shadow">-</a>
 
 {% endblock %}

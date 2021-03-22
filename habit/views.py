@@ -46,6 +46,13 @@ class HabitDetailView(DetailView):
         return context
 
 
+class HabitDeleteView(DeleteView):
+    model = models.Habit
+
+    def get_success_url(self):
+        return reverse('habit:habitlist')
+
+
 class HabitCreateView(CreateView):
     model = models.Habit
     form_class = forms.HabitForm
