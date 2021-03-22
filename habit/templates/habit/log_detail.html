@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ object.created }}{% endblock %}
+
+{% block content %}
+
+<div class="card-container">
+  <div class="card">
+    <div class="card-title">{{ object.created }}에 남긴 기록</div>
+    <div class="card-contents">
+      <div>{{ object.memo }}</div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
