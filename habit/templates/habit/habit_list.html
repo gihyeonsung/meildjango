@@ -7,7 +7,7 @@
 <div class="card-container">
   {% for habit in object_list %}
     <a href="{% url 'habit:habitdetail' habit.pk %}">
-      <div class="card">
+      <div class="card shadow">
         <div class="card-title">{{ habit.title }}</div>
         <div class="card-contents">
           {% load humanize %}
@@ -19,6 +19,6 @@
   {% endfor %}
 </div>
 
-<a href="{% url 'habit:habitcreate' %}" class="btn-add">+</a>
+<a href="{% url 'habit:habitcreate' %}" class="btn btn-create shadow">+</a>
 
 {% endblock %}

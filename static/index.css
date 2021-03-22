@@ -14,6 +14,10 @@ a:visited {
   color: #000000;
 }
 
+.shadow {
+  box-shadow: rgba(0,0,0,0.3) 0 0 0.5rem;
+}
+
 .card-container {
   display: flex;
   flex-direction: column;
@@ -22,7 +26,6 @@ a:visited {
 
 .card {
   border-radius: 0.5rem;
-  box-shadow: rgba(0,0,0,0.3) 0 0 0.5rem;
   display: flex-container;
   margin: 0 0 1rem 0;
 }
@@ -40,30 +43,24 @@ a:visited {
   padding: 2rem 1rem;
 }
 
-.btn-add {
-  box-shadow: rgba(0,0,0,0.3) 0 0 0.5rem;
-  background-color: #a240fc;
+.btn {
   border-radius: 50%;
   bottom: 1rem;
-  color: #ffffff !important;
-  font-size: 4rem;
   height: 4rem;
   position: fixed;
-  right: 1rem;
   text-align: center;
   width: 4rem;
+  font-size: 4rem;
+}
+
+.btn-create {
+  background-color: #a240fc;
+  color: #ffffff !important;
+  right: 1rem;
 }
 
 .btn-delete {
-  box-shadow: rgba(0,0,0,0.3) 0 0 0.5rem;
   background-color: #ffffff;
-  border-radius: 50%;
-  bottom: 1rem;
   color: #a240fc !important;
-  font-size: 4rem;
-  height: 4rem;
-  position: fixed;
   left: 1rem;
-  text-align: center;
-  width: 4rem;
 }
