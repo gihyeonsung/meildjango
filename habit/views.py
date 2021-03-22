@@ -6,26 +6,6 @@ from django.views.generic.list import ListView
 from . import models, forms
 
 
-def humanize_delta(delta: timezone.timedelta):
-    """
-    humanize timedelta in korean to string
-    """
-    secs = delta.total_seconds()
-    if secs < 60:
-        return f'{secs}초'
-
-    mins = int(secs // 60)
-    if mins < 60:
-        return f'{mins}분'
-
-    hours = int(mins // 60)
-    if hours < 24:
-        return f'{hours}시간'
-
-    days = int(hours // 24)
-    return f'{days}일'
-
-
 class HabitListView(ListView):
     model = models.Habit
 
