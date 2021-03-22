@@ -41,6 +41,7 @@ a:visited {
 }
 
 .btn-add {
+  box-shadow: rgba(0,0,0,0.3) 0 0 0.5rem;
   background-color: #a240fc;
   border-radius: 50%;
   bottom: 1rem;
@@ -49,6 +50,20 @@ a:visited {
   height: 4rem;
   position: fixed;
   right: 1rem;
+  text-align: center;
+  width: 4rem;
+}
+
+.btn-delete {
+  box-shadow: rgba(0,0,0,0.3) 0 0 0.5rem;
+  background-color: #ffffff;
+  border-radius: 50%;
+  bottom: 1rem;
+  color: #a240fc !important;
+  font-size: 4rem;
+  height: 4rem;
+  position: fixed;
+  left: 1rem;
   text-align: center;
   width: 4rem;
 }
