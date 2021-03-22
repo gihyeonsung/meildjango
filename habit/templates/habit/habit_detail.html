@@ -8,7 +8,8 @@
   <div class="card">
     <div class="card-title">{{ object.title }}</div>
     <div class="card-contents">
-      <div>이번 기간은 {{ object.curr_remaining }} 남았어요</div>
+      {% load humanize %}
+      <div>이번 기간은 {{ object.curr_remaining | humanizeTimedelta }} 남았어요</div>
       <div>목표 횟수 {{ object.count }}번 중에 {{ object.curr_count }}번 반복하셨어요!</div>
       <div>{{ object.description }}</div>
     </div>
