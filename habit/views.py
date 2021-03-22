@@ -1,5 +1,4 @@
 from django.urls import reverse
-from django.utils import timezone
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
@@ -81,3 +80,7 @@ class LogCreateView(CreateView):
 
     def get_initial(self):
         return {'habit': self.kwargs.get('pk')}
+
+
+class LogDetailView(DetailView):
+    model = models.Log

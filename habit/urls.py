@@ -9,5 +9,7 @@ urlpatterns = [
     path('create/', views.HabitCreateView.as_view(), name='habitcreate'),
     path('<int:pk>/', views.HabitDetailView.as_view(), name='habitdetail'),
     path('<int:pk>/logs/create/', views.LogCreateView.as_view(),
-         name='logcreate')
+         name='logcreate'),
+    path('<int>/logs/<int:pk>/', views.LogDetailView.as_view(),
+         name='logdetail'),
 ]
