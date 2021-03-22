@@ -10,7 +10,7 @@ urlpatterns = [
     path('<int:pk>/', views.HabitDetailView.as_view(), name='habitdetail'),
     path('<int:pk>/logs/create/', views.LogCreateView.as_view(),
          name='logcreate'),
-    path('<int>/logs/<int:pk>/', views.LogDetailView.as_view(),
+    path('<int:habitpk>/logs/<int:pk>/', views.LogDetailView.as_view(),
          name='logdetail'),
     path('<int:habitpk>/logs/<int:pk>/delete/', views.LogDeleteView.as_view(),
          name='logdelete'),
