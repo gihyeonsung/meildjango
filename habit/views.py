@@ -32,6 +32,7 @@ class HabitDetailView(DetailView):
 
     def create_object(self, habit: models.Habit):
         return {
+            'pk': habit.pk,
             'title': habit.title,
             'description': habit.description,
             'count': habit.count,
