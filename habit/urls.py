@@ -12,4 +12,6 @@ urlpatterns = [
          name='logcreate'),
     path('<int>/logs/<int:pk>/', views.LogDetailView.as_view(),
          name='logdetail'),
+    path('<int:habitpk>/logs/<int:pk>/delete/', views.LogDeleteView.as_view(),
+         name='logdelete'),
 ]

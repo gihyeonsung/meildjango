@@ -1,6 +1,6 @@
 from django.urls import reverse
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView
 from django.views.generic.list import ListView
 
 from . import models, forms
@@ -84,3 +84,11 @@ class LogCreateView(CreateView):
 
 class LogDetailView(DetailView):
     model = models.Log
+
+
+class LogDeleteView(DeleteView):
+    model = models.Log
+
+    def get_success_url(self):
+        return reverse(
+            'habit:habitdetail', args=[str(self.kwargs.get('habitpk'))])

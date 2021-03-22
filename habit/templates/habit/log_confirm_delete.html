@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ object.created }}{% endblock %}
+
+{% block content %}
+
+<div class="card-container">
+  <div class="card">
+    <div class="card-title">기록 남기기</div>
+    <div class="card-contents">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="저장">
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
