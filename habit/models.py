@@ -11,6 +11,9 @@ class Habit(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.title
+
     def get_absolute_url(self):
         return reverse('habit:habitdetail', args=[str(self.id)])
 
