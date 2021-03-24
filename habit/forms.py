@@ -21,5 +21,7 @@ class LogForm(forms.ModelForm):
         fields = ['memo', 'habit']
         labels = {
             'memo': '메모를 남겨주세요',
-            'habit': '어떤 습관의 기록인가요?',
+        }
+        widgets = {
+            'habit': forms.HiddenInput(),
         }
