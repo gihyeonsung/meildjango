@@ -12,7 +12,7 @@ class HabitListView(ListView):
     def create_object(self, habit: models.Habit):
         return {
             'pk': habit.pk,
-            'title': habit.title,
+            'name': habit.name,
             'count': habit.count,
             'curr_remaining': habit.get_curr_remaining(),
             'curr_count': habit.get_curr_count(),
@@ -38,7 +38,7 @@ class HabitDetailView(DetailView):
     def create_object(self, habit: models.Habit):
         return {
             'pk': habit.pk,
-            'title': habit.title,
+            'name': habit.name,
             'description': habit.description,
             'count': habit.count,
             'curr_remaining': habit.get_curr_remaining(),

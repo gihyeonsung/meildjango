@@ -4,15 +4,15 @@ from django.utils import timezone
 
 
 class Habit(models.Model):
-    title = models.CharField(max_length=100)
-    description = models.TextField()
-    duration = models.DurationField()
-    count = models.PositiveIntegerField()
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+    duration = models.DurationField(default=timezone.timedelta(days=1))
+    count = models.PositiveIntegerField(default=1)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.title
+        return self.name
 
     def get_absolute_url(self):
         return reverse('habit:habitdetail', args=[str(self.id)])
