@@ -40,8 +40,7 @@ class Habit(models.Model):
         return self.get_curr_start() + self.duration
 
     def get_curr_remaining(self):
-        return self.get_curr_end() - truncate_datetime_days(
-            timezone.localtime())
+        return self.get_curr_end() - timezone.localtime()
 
     def get_curr_count(self):
         return self.get_logs() \
