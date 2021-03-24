@@ -8,7 +8,7 @@
   {% for habit in object_list %}
     <a href="{% url 'habit:habitdetail' habit.pk %}">
       <div class="card shadow">
-        <div class="card-title">{{ habit.title }}</div>
+        <div class="card-title">{{ habit.name }}</div>
         <div class="card-contents">
           {% load humanize %}
           <div>이번 기간은 {{ habit.curr_remaining | humanizeTimedelta }} 남았어요</div>

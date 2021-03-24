@@ -6,7 +6,7 @@
 
 <div class="card-container">
   <div class="card shadow">
-    <div class="card-title">{{ object.title }}</div>
+    <div class="card-title">{{ object.name }}</div>
     <div class="card-contents">
       {% load humanize %}
       <div>이번 기간은 {{ object.curr_remaining | humanizeTimedelta }} 남았어요</div>
