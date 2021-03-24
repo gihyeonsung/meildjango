@@ -38,7 +38,7 @@ class Habit(models.Model):
 
 
 class Log(models.Model):
-    memo = models.TextField()
+    memo = models.TextField(blank=True)
     habit = models.ForeignKey(Habit, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
