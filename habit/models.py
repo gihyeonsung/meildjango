@@ -3,6 +3,10 @@ from django.urls import reverse
 from django.utils import timezone
 
 
+def truncate_datetime_days(datetime: timezone.datetime):
+    return datetime.replace(hour=0, minute=0, second=0, microsecond=0)
+
+
 class Habit(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
@@ -20,15 +24,24 @@ class Habit(models.Model):
     def get_logs(self):
         return Log.objects.filter(habit=self.pk).order_by('-created')
 
+    def get_curr_index(self):
+        now = truncate_datetime_days(timezone.localtime())
+        created = truncate_datetime_days(timezone.localtime(self.created))
+        try:
+            return (now - created) // self.duration
+        except ZeroDivisionError:
+            return created
+
     def get_curr_start(self):
-        curr_index = (timezone.now() - self.created) // self.duration
-        return self.created + (curr_index * self.duration)
+        created = truncate_datetime_days(timezone.localtime(self.created))
+        return created + (self.get_curr_index() * self.duration)
 
     def get_curr_end(self):
         return self.get_curr_start() + self.duration
 
     def get_curr_remaining(self):
-        return self.get_curr_end() - timezone.now()
+        return self.get_curr_end() - truncate_datetime_days(
+            timezone.localtime())
 
     def get_curr_count(self):
         return self.get_logs() \
